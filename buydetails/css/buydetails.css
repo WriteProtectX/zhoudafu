@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 18px 12px 10px;
+    padding: 1rem 1.5rem 1rem 0.83rem;
     box-sizing: border-box;
     /*background: #912941;*/
     color: #FFF;
@@ -16,68 +16,69 @@
     color: #FFF;
 }
 .top a .iconfont{
-    font-size: 18px;
+    font-size: 1.5rem;
 }
 .buydetails{
-    margin-top: 40px;
+    margin-top: 3.3rem;
     background: #f2f2f2;
     height: 100%;
 }
 .order{
     box-sizing: border-box;
-    padding: 12px 20px;
+    padding: 1rem 1.6rem;
     display: flex;
     flex-direction: column;
-    font-size: 16px;
+    font-size: 1.3rem;
     background: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 0.83rem;
 }
 .order span{
-    margin-bottom: 10px;
+    margin-bottom: 0.83rem;
 }
 
 .pro-list{
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    padding: 10px 20px;
+    padding: 0.83rem 1.6rem;
     background: #fff;
-    margin-bottom: 6px;
+    margin-bottom: 0.5rem;
 }
 .pro-list img{
-    height: 80px;
-    width: 80px;
+    height: 6.66rem;
+    width: 6.66rem;
     border:1px solid #ddd;
-    margin-right: 10px;
+    margin-right: 0.80rem;
 }
 .pro-mes{
 
     display: flex;
     flex-direction: column;
-    font-size: 16px;
+    font-size: 1.3rem;
 }
 .pro-mes .pirce{
     color: red;
-    font-size: 18px;
+    font-size: 1.5rem;
 }
 .title{
-    width: 244px;
+    width: 20.3rem;
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
 }
 .pro-mes span{
-    margin-bottom: 12px;
+    margin-bottom: 1rem;
 }
 .list ul li{
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 0.83rem 1.6rem;
     align-items: center;
     background: #fff;
     border-bottom: 1px solid #f2f2f2;
+	font-size: 1.3rem;
 }
 .newpirce{
     color: red;
-    font-size: 18px;
+    font-size: 1.5rem;
 }

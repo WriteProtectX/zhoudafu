@@ -1,17 +1,17 @@
 .user {
 	background: #F9F8F5;
 	height: 100%;
-	padding-top: 20px;
+	padding-top: 1.6rem;
 }
 
 .user-card {
-	height: 220px;
-	border-radius: 16px;
+	height: 18.3rem;
+	border-radius: 1.3rem;
 	/*background:#912941;*/
 	background-image: linear-gradient(45deg, #874da2 0%, #c43a30 100%);
-	margin: 0px 10px 0px 10px;
+	margin: 0rem 0.8rem 0px 0.8rem;
 	box-sizing: border-box;
-	padding: 16px;
+	padding: 1.3rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -31,13 +31,13 @@
 }
 
 .user-card .icon .code .iconfont {
-	font-size: 40px;
-	padding-bottom: 3px;
+	font-size: 3.3rem;
+	padding-bottom: 0.25rem;
 }
 
 .user-card .icon img {
-	width: 90px;
-	height: 50px;
+	width: 7.5rem;
+	height: 4.1rem;
 }
 
 .user-card .font {
@@ -49,23 +49,23 @@
 }
 
 .user-card .font h3 {
-	font-size: 40px;
-	padding-bottom: 20px;
+	font-size: 3.3rem;
+	padding-bottom: 1.6rem;
 }
 
 .user-card .font p {
-	font-size: 14px;
-	padding-bottom: 20px;
+	font-size: 1.166rem;
+	padding-bottom: 1.66rem;
 	color: #ddd;
 	text-align: center;
 }
 
 .user-card .font span {
-	font-size: 14px;
+	font-size: 1.166rem;
 }
 
 .user-card .font span a {
-	font-size: 14px;
+	font-size: 1.166rem;
 	color: #FFF;
 }
 
@@ -73,10 +73,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	margin: 10px 10px;
+	margin: 0.8rem 0.8rem;
 	box-sizing: border-box;
-	padding: 20px 0px;
-	border-radius: 16px;
+	padding: 1.66rem 0px;
+	border-radius: 0.7rem;
 	background: #FFF;
 }
 
@@ -84,17 +84,17 @@
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	font-size: 16px;
+	font-size: 0.7rem;
 }
 
 .item-nav p {
-	padding-bottom: 14px;
+	padding-bottom: 0.85rem;
 }
 
 .itemafter:after {
 	content: "";
 	border-right: 1px solid #C6C3C3;
-	height: 50px;
+	height: 4.12rem;
 	position: absolute;
 	left: 50%;
 }
@@ -105,8 +105,8 @@
 
 .user-list ul li {
 	background: #FFF;
-	padding: 14px 20px;
-	border-bottom: 1px solid #eee;
+	padding: 1.16rem 1.6rem;
+	border-bottom: 0.08rem solid #eee;
 }
 
 .user-list ul li a {
@@ -121,12 +121,12 @@
 }
 
 .user-list .user-list-item .icon {
-	padding-right: 20px;
+	padding-right: 1.66rem;
 }
 
 .user-list .iconfont {
 	vertical-align: middle;
-	font-size: 18px;
+	font-size: 1.5rem;
 	font-weight: bold;
 }
 
@@ -134,15 +134,15 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 50px;
+	margin-top: 4.1rem;
 }
 
 .btn div a {
 	display: block;
-	width: 155px;
-	height: 40px;
+	width: 12.9rem;
+	height: 3.33rem;
 	background-image: linear-gradient(45deg, #874da2 0%, #c43a30 100%);
 	text-align: center;
-	line-height: 40px;
+	line-height: 3.3rem;
 	color: #FFF;
 }
