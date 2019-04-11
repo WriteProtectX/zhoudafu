@@ -1,129 +1,148 @@
+.user {
+	background: #F9F8F5;
+	height: 100%;
+	padding-top: 20px;
+}
 
-.user{
-  background: #F9F8F5;
-    height: 100%;
-    padding-top: 20px;
+.user-card {
+	height: 220px;
+	border-radius: 16px;
+	/*background:#912941;*/
+	background-image: linear-gradient(45deg, #874da2 0%, #c43a30 100%);
+	margin: 0px 10px 0px 10px;
+	box-sizing: border-box;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
-.user-card{
-    height:220px;
-    border-radius: 16px;
-    /*background:#912941;*/
-    background-image: linear-gradient(45deg, #874da2 0%, #c43a30 100%);
-    margin: 0px 10px 0px 10px;
-    box-sizing: border-box;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
+.user-card .icon {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
-.user-card .icon{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+.user-card .icon .code a {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: #FFF;
 }
-.user-card .icon .code a{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: #FFF;
+
+.user-card .icon .code .iconfont {
+	font-size: 40px;
+	padding-bottom: 3px;
 }
-.user-card .icon .code .iconfont{
-    font-size: 40px;
-    padding-bottom:3px;
+
+.user-card .icon img {
+	width: 90px;
+	height: 50px;
 }
-.user-card .icon img{
-    width: 90px;
-    height: 50px;
+
+.user-card .font {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	color: #FFF;
 }
-.user-card .font{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    color: #FFF;
+
+.user-card .font h3 {
+	font-size: 40px;
+	padding-bottom: 20px;
 }
-.user-card .font h3{
-    font-size: 40px;
-    padding-bottom: 20px;
+
+.user-card .font p {
+	font-size: 14px;
+	padding-bottom: 20px;
+	color: #ddd;
+	text-align: center;
 }
-.user-card .font p{
-    font-size: 14px;
-    padding-bottom: 20px;
-    color: #ddd;
-}
+
 .user-card .font span {
-     font-size: 14px;
- }
-.user-card .font span a{
-    font-size: 14px;
-    color: #FFF;
+	font-size: 14px;
 }
 
-.user-jifen{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin:10px 10px;
-    box-sizing: border-box;
-    padding: 20px 0px;
-    border-radius: 16px;
-    background: #FFF;
-}
-.item-nav{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-size: 16px;
-}
-.item-nav p{
-    padding-bottom: 14px;
-}
-.itemafter:after{
-    content: "";
-    border-right: 1px solid #C6C3C3;
-    height: 50px;
-    position: absolute;
-    left: 50%;
+.user-card .font span a {
+	font-size: 14px;
+	color: #FFF;
 }
 
-.item-nav span{
-    color: #912941;
-}
-.user-list ul li{
-    background: #FFF;
-    padding: 14px 20px;
-    border-bottom: 1px solid #eee;
-}
-.user-list ul li a{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.user-list .user-list-item{
-    display: flex;
-    align-items: center;
-}
-.user-list .user-list-item .icon{
-    padding-right: 20px;
-}
-.user-list .iconfont{
-    vertical-align: middle;
-    font-size: 18px;
-    font-weight: bold;
+.user-jifen {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin: 10px 10px;
+	box-sizing: border-box;
+	padding: 20px 0px;
+	border-radius: 16px;
+	background: #FFF;
 }
 
-.btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
+.item-nav {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	font-size: 16px;
 }
-.btn div a{
-    display: block;
-    width: 155px;
-    height:40px;
-    background-image: linear-gradient(45deg, #874da2 0%, #c43a30 100%);
-    text-align: center;
-    line-height: 40px;
-    color: #FFF;
+
+.item-nav p {
+	padding-bottom: 14px;
+}
+
+.itemafter:after {
+	content: "";
+	border-right: 1px solid #C6C3C3;
+	height: 50px;
+	position: absolute;
+	left: 50%;
+}
+
+.item-nav span {
+	color: #912941;
+}
+
+.user-list ul li {
+	background: #FFF;
+	padding: 14px 20px;
+	border-bottom: 1px solid #eee;
+}
+
+.user-list ul li a {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.user-list .user-list-item {
+	display: flex;
+	align-items: center;
+}
+
+.user-list .user-list-item .icon {
+	padding-right: 20px;
+}
+
+.user-list .iconfont {
+	vertical-align: middle;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+
+.btn div a {
+	display: block;
+	width: 155px;
+	height: 40px;
+	background-image: linear-gradient(45deg, #874da2 0%, #c43a30 100%);
+	text-align: center;
+	line-height: 40px;
+	color: #FFF;
 }
