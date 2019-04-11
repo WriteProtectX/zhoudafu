@@ -1,7 +1,13 @@
-.user {
+body {
+	/* height: 100%; */
 	background: #F9F8F5;
-	height: 100%;
+}
+
+.user {
+	
+	/* height: 100%; */
 	padding-top: 1.6rem;
+	padding-bottom: 1.6rem;
 }
 
 .user-card {
@@ -104,6 +110,7 @@
 }
 
 .user-list ul li {
+	font-size: 1.33rem;
 	background: #FFF;
 	padding: 1.16rem 1.6rem;
 	border-bottom: 0.08rem solid #eee;
@@ -118,6 +125,7 @@
 .user-list .user-list-item {
 	display: flex;
 	align-items: center;
+	vertical-align: middle;
 }
 
 .user-list .user-list-item .icon {
@@ -134,7 +142,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 4.1rem;
+	margin-top: 1.5rem;
 }
 
 .btn div a {
