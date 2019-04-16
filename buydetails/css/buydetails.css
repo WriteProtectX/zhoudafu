@@ -47,7 +47,7 @@
 .pro-list img{
     height: 6.66rem;
     width: 6.66rem;
-    border:1px solid #ddd;
+    border:0.083rem solid #ddd;
     margin-right: 0.80rem;
 }
 .pro-mes{
@@ -75,7 +75,7 @@
     padding: 0.83rem 1.6rem;
     align-items: center;
     background: #fff;
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: 0.083rem solid #f2f2f2;
 	font-size: 1.3rem;
 }
 .newpirce{

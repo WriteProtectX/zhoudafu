@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 18px 12px 10px;
+    padding: 1rem 1.5rem 1rem 0.833rem;
     box-sizing: border-box;
     /*background: #912941;*/
     color: #FFF;
@@ -16,56 +16,59 @@
     color: #FFF;
 }
 .top a .iconfont{
-    font-size: 18px;
+    font-size: 1.5rem;
+}
+.activatedetails{
+    padding-bottom: 1.667rem;
 }
 .text{
-    margin-top: 40px;
-    padding: 30px 0px;
-    font-size:18px;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 16px;
+    margin-top: 3.333rem;
+    padding: 2.5rem 0rem;
+    font-size:1.5rem;
+    border-bottom: 0.083rem solid #ddd;
+    margin-bottom: 1.333rem;
 }
 .text span{
-    padding-left:14px;
+    padding-left:1.167rem;
     font-weight: bold;
 }
 .one-list{
     display: flex;
-    padding: 0px 14px;
+    padding: 0rem 1.167rem;
     box-sizing: border-box;
-    margin-bottom: 16px;
+    margin-bottom: 1.333rem;
     vertical-align: middle;
 }
 .one-list .size{
-    font-size: 16px;
+    font-size: 1.333rem;
     font-weight: bold;
-    padding-right: 24px;
-    padding-top: 6px;
+    padding-right: 2rem;
+    padding-top: 0.5rem;
 
 }
 .one-list-item{
     display: flex;
     flex-direction: column;
-    font-size: 16px;
+    font-size: 1.333rem;
     width: 68%;
 }
 .one-list-item span{
-    padding-bottom: 14px;
-    line-height: 26px;
+    padding-bottom: 1.167rem;
+    line-height: 2.167rem;
 }
 
 .btn{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 2.833rem;
 }
 .btn div a{
     display: block;
-    width: 155px;
-    height:40px;
+    width: 12.917rem;
+    height:3.333rem;
     background-image: linear-gradient(45deg, #874da2 0%, #c43a30 100%);
     text-align: center;
-    line-height: 40px;
+    line-height: 3.333rem;
     color: #FFF;
 }

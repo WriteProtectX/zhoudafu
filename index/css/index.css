@@ -1,3 +1,7 @@
+html{
+	background: #F9F8F5!important;
+}
+
 body {
 	/* height: 100%; */
 	background: #F9F8F5;
@@ -11,11 +15,11 @@ body {
 }
 
 .user-card {
-	height: 18.3rem;
+	height: 17.3rem;
 	border-radius: 1.3rem;
 	/*background:#912941;*/
 	background-image: linear-gradient(45deg, #874da2 0%, #c43a30 100%);
-	margin: 0rem 0.8rem 0px 0.8rem;
+	margin: 0rem 0.8rem 0rem 0.8rem;
 	box-sizing: border-box;
 	padding: 1.3rem;
 	display: flex;
@@ -81,7 +85,7 @@ body {
 	justify-content: space-around;
 	margin: 0.8rem 0.8rem;
 	box-sizing: border-box;
-	padding: 1.66rem 0px;
+	padding: 1.66rem 0rem;
 	border-radius: 0.7rem;
 	background: #FFF;
 }
@@ -99,7 +103,7 @@ body {
 
 .itemafter:after {
 	content: "";
-	border-right: 1px solid #C6C3C3;
+	border-right: 0.083rem solid #C6C3C3;
 	height: 4.12rem;
 	position: absolute;
 	left: 50%;
