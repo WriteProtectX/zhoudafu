@@ -18,6 +18,9 @@
 .top a .iconfont{
     font-size: 1.5rem;
 }
+.top .tit{
+    font-size: 1.3rem;
+}
 .activatedetails{
     padding-bottom: 1.667rem;
 }
@@ -34,7 +37,7 @@
 }
 .one-list{
     display: flex;
-    padding: 0rem 1.167rem;
+    padding:0rem 1.2rem;
     box-sizing: border-box;
     margin-bottom: 1.333rem;
     vertical-align: middle;
@@ -42,7 +45,7 @@
 .one-list .size{
     font-size: 1.333rem;
     font-weight: bold;
-    padding-right: 2rem;
+    padding-right: 1rem;
     padding-top: 0.5rem;
 
 }
@@ -50,20 +53,22 @@
     display: flex;
     flex-direction: column;
     font-size: 1.333rem;
-    width: 68%;
+    width: 70%;
 }
 .one-list-item span{
     padding-bottom: 1.167rem;
     line-height: 2.167rem;
 }
-
+.one-list-item p{
+    line-height: 2.4rem;
+}
 .btn{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 2.833rem;
 }
-.btn div a{
+.btn .btntwo span{
     display: block;
     width: 12.917rem;
     height:3.333rem;
@@ -71,4 +76,5 @@
     text-align: center;
     line-height: 3.333rem;
     color: #FFF;
+    font-size: 1.3rem;
 }

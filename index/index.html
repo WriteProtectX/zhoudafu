@@ -1,106 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-		<title>会员中心</title>
-		<link rel="stylesheet" href="./css/index.css">
-		<link rel="stylesheet" href="../components/common.css">
-		<link rel="stylesheet" href="../components/iconfont/iconfont.css">
-	</head>
-	<body>
-		<div class="user">
-			<div class="user-card">
-				<div class="icon">
-					<img src="./images/user_logo.jpeg" alt="">
-					<div class="code">
-						<a href="#">
-							<span class="iconfont">&#xe615;</span>
-							<span>二维码</span>
-						</a>
-					</div>
-				</div>
-				<div class="font">
-					<h3>外观服务卡</h3>
-					<p>让每位光临我们门店的顾客能够享受100%的满意</p>
-					<span><a href="../activatedetails/activatedetails.html">点击激活</a></span>
-				</div>
-			</div>
-			<div class="tuceng"><span class="iconfont" style="font-size: 300px;">&#xe615;</span></div>
-			<div class="user-jifen">
-				<div class="item-nav itemafter">
-					<p>会员积分</p>
-					<span>0</span>
-				</div>
-				<div class="item-nav">
-					<p>身份类型</p>
-					<span>粉丝</span>
-				</div>
-			</div>
-			<div class="user-list">
-				<ul>
-					<li>
-						<a href="../activatedetails/activatedetails.html">
-							<div class="user-list-item">
-								<span class="iconfont icon">&#xe600;</span>
-								<p>外观服务卡详情</p>
-							</div>
-							<span class="iconfont">&#xe71a;</span>
-						</a>
-					</li>
-					<li>
-						<a href="../purchasehistory/purchasehistory.html">
-							<div class="user-list-item">
-								<span class="iconfont icon">&#xe618;</span>
-								<p>购买记录</p>
-							</div>
-							<span class="iconfont">&#xe71a;</span>
-						</a>
-					</li>
-					<li>
-						<a href="../gift/gift.html">
-							<div class="user-list-item">
-								<span class="iconfont icon">&#xe6bf;</span>
-								<p>礼品查询</p>
-							</div>
-							<span class="iconfont">&#xe71a;</span>
-						</a>
-					</li>
-					<li>
-						<a href="../telldetails/telldetails.html">
-							<div class="user-list-item">
-								<span class="iconfont icon">&#xe7bb;</span>
-								<p>专属腕表管家</p>
-							</div>
-							<span class="iconfont">&#xe686;</span>
-						</a>
-					</li>
-				</ul>
-			</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <title>会员中心</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="../components/common.css">
+    <link rel="stylesheet" href="../components/zdialog.css">
+    <link rel="stylesheet" href="../components/reset.css">
+    <link rel="stylesheet" href="../components/iconfont/iconfont.css">
+</head>
+<body>
+<div class="user">
 
-			<div class="btn">
-				<div><a href="#">退出登录</a></div>
-			</div>
-		</div>
-
-	</body>
-	<script src="../components/js/jquery-3.2.1.min.js"></script>
-	<script>
-		$(function() {
-			//二维码展示显示
-			$(".code").on("click", function(e) {
-				$(".tuceng").show();
-				$('.tuceng').css('display', 'flex')
-				$(".tuceng").one("click", function() {
-					$(".tuceng").hide();
-				});
-				e.stopPropagation();
-			});
-			$(".tuceng").on("click", function(e) {
-				e.stopPropagation();
-			});
+</div>
+<div class="btn">
+    <div id="tuichu">退出登录</div>
+</div>
+</body>
+<script src="../components/js/jquery-3.2.1.min.js"></script>
+<script src="../components/js/zdialog.js"></script>
+<script>
+    $(function () {
+        let isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+                window.location.reload();
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
 
 
-		})
-	</script>
+        function f1() {
+            $.get("http://zdf.dev.hyplmm.com/platform/v1/customer/detail", function (data) {
+                // console.log(data);
+                // // 加入HTML
+                let mesdata = data.result
+                console.log(mesdata)
+                let html = ''
+                html = '<div class="user-card">\n' +
+                    '\t\t\t\t<div class="icon">\n' +
+                    '\t\t\t\t\t<img src="./images/user_logo.jpeg" alt="">\n' +
+                    '\t\t\t\t\t<div class="code">\n' +
+                    '\t\t\t\t\t\t<a href="#">\n' +
+                    '\t\t\t\t\t\t\t<span class="iconfont">&#xe615;</span>\n' +
+                    '\t\t\t\t\t\t\t<span>二维码</span>\n' +
+                    '\t\t\t\t\t\t</a>\n' +
+                    '\t\t\t\t\t</div>\n' +
+                    '\t\t\t\t</div>\n' +
+                    '\t\t\t\t<div class="font">\n' +
+                    '\t\t\t\t\t<h3>外观服务卡</h3>\n' +
+                    '\t\t\t\t\t<p>让每位光临我们门店的顾客能够享受100%的满意</p>\n' +
+                    '\t\t\t\t\t<span id="activa"></span>\n' +
+                    '\t\t\t\t</div>\n' +
+                    '\t\t\t</div>\n' +
+                    '\t\t\t<div class="tuceng"><img src="http://' + mesdata.serviceCode.qrcode_img + '" alt=""></div>\n' +
+                    '\t\t\t<div class="user-jifen">\n' +
+                    '\t\t\t\t<div class="item-nav itemafter">\n' +
+                    '\t\t\t\t\t<p>会员积分</p>\n' +
+                    '\t\t\t\t\t<span>' + mesdata.member_points + '</span>\n' +
+                    '\t\t\t\t</div>\n' +
+                    '\t\t\t\t<div class="item-nav">\n' +
+                    '\t\t\t\t\t<p>身份类型</p>\n' +
+                    '\t\t\t\t\t<span>' + mesdata.is_member + '</span>\n' +
+                    '\t\t\t\t</div>\n' +
+                    '\t\t\t</div>\n' +
+                    '\t\t\t<div class="user-list">\n' +
+                    '\t\t\t\t<ul>\n' +
+                    '\t\t\t\t\t<li>\n' +
+                    '\t\t\t\t\t\t<a href="../activatedetails/activatedetails.html">\n' +
+                    '\t\t\t\t\t\t\t<div class="user-list-item">\n' +
+                    '\t\t\t\t\t\t\t\t<span class="iconfont icon">&#xe600;</span>\n' +
+                    '\t\t\t\t\t\t\t\t<p>外观服务卡详情</p>\n' +
+                    '\t\t\t\t\t\t\t</div>\n' +
+                    '\t\t\t\t\t\t\t<span class="iconfont">&#xe71a;</span>\n' +
+                    '\t\t\t\t\t\t</a>\n' +
+                    '\t\t\t\t\t</li>\n' +
+                    '\t\t\t\t\t<li>\n' +
+                    '\t\t\t\t\t\t<a href="../purchasehistory/purchasehistory.html">\n' +
+                    '\t\t\t\t\t\t\t<div class="user-list-item">\n' +
+                    '\t\t\t\t\t\t\t\t<span class="iconfont icon">&#xe618;</span>\n' +
+                    '\t\t\t\t\t\t\t\t<p>购买记录</p>\n' +
+                    '\t\t\t\t\t\t\t</div>\n' +
+                    '\t\t\t\t\t\t\t<span class="iconfont">&#xe71a;</span>\n' +
+                    '\t\t\t\t\t\t</a>\n' +
+                    '\t\t\t\t\t</li>\n' +
+                    '\t\t\t\t\t<li>\n' +
+                    '\t\t\t\t\t\t<a href="../gift/gift.html">\n' +
+                    '\t\t\t\t\t\t\t<div class="user-list-item">\n' +
+                    '\t\t\t\t\t\t\t\t<span class="iconfont icon">&#xe6bf;</span>\n' +
+                    '\t\t\t\t\t\t\t\t<p>礼品查询</p>\n' +
+                    '\t\t\t\t\t\t\t</div>\n' +
+                    '\t\t\t\t\t\t\t<span class="iconfont">&#xe71a;</span>\n' +
+                    '\t\t\t\t\t\t</a>\n' +
+                    '\t\t\t\t\t</li>\n' +
+                    '\t\t\t\t\t<li>\n' +
+                    '\t\t\t\t\t\t<a href="../telldetails/telldetails.html">\n' +
+                    '\t\t\t\t\t\t\t<div class="user-list-item">\n' +
+                    '\t\t\t\t\t\t\t\t<span class="iconfont icon">&#xe7bb;</span>\n' +
+                    '\t\t\t\t\t\t\t\t<p>专属腕表管家</p>\n' +
+                    '\t\t\t\t\t\t\t</div>\n' +
+                    '\t\t\t\t\t\t\t<span class="iconfont">&#xe686;</span>\n' +
+                    '\t\t\t\t\t\t</a>\n' +
+                    '\t\t\t\t\t</li>\n' +
+                    '\t\t\t\t</ul>\n' +
+                    '\t\t\t</div>\n'
+
+
+                    $('.user').append(html)
+
+                //二维码展示显示
+                $(".code").on("click", function (e) {
+                    // console.log(123)
+                    $(".tuceng").show();
+                    $('.tuceng').css('display', 'flex')
+                    $(".tuceng").one("click", function () {
+                        $(".tuceng").hide();
+                    });
+                    e.stopPropagation();
+                });
+                $(".tuceng").on("click", function (e) {
+                    e.stopPropagation();
+                });
+
+                // <a href='../activatedetails/activatedetails.html' id='activation'>点击激活</a>
+
+
+                // let text1 = $("#activa")
+                if (mesdata.serviceCode.status == "未激活") {
+                    $("#activa").append("<span id='activation' >点击激活</span>");
+                    $("#activation").on("click", function (e) {
+                        if (mesdata.order == 0) {
+                            alert("暂无消费记录，无法激活！")
+                        } else {
+                            window.location.href = "../activatedetails/activatedetails.html";
+                        }
+                    })
+
+                } else {
+                    $("#activa").html(mesdata.serviceCode.activation_time);
+                }
+            }, "json");
+        }
+
+        f1()
+
+        $("#tuichu").on("click", function (e) {
+            $.DialogByZ.Confirm({Title: "", Content: "亲，确认退出登录吗？</br>",FunL:confirmL,FunR:Immediate})
+        })
+        function confirmL(){
+                $.post("http://zdf.dev.hyplmm.com/platform/v1/customer/logout",function(res){
+                    console.log(res)
+                    if (res.message == "success"){
+                        window.location.href = "../login/login.html";
+                    }else {
+                        alert(res.message)
+                    }
+                },"json");
+
+        }
+        function Immediate(){
+            $(".zbox-popup-in").css("display","none")
+            $(".zbox-active").css("display","none")
+
+        }
+        // function f2(){
+
+        // }
+        // f2()
+
+
+    })
+</script>
 </html>

@@ -17,8 +17,11 @@
 .top a .iconfont{
     font-size: 1.5rem;
 }
+.top .tit{
+    font-size: 1.3rem;
+}
 .purchasehistory{
-    margin-top: 3.33rem;
+    padding-top: 3.8rem;
     background: #f2f2f2;
     height: 100%;
 }

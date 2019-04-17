@@ -12,43 +12,56 @@
 
 <div class="purchasehistory">
     <div class="top">
-        <span onClick="javascript :history.back(-1)"><a href="#" class="iconfont">&#xe675;<span>返回</span></a></span>
-        <span>礼品查询</span>
-        <span><a href="#" class="iconfont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+<!--        <span onClick="javascript :history.back(-1)"><a href="#" class="iconfont">&#xe675;<span>返回</span></a></span>-->
+<!--        <span class="tit">礼品查询</span>-->
+<!--        <span><a href="#" class="iconfont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>-->
     </div>
-    <div class="pro-list">
-        <img src="./images/pic.jpeg" alt="">
-        <div class="item-list">
-            <span class="title">周大福定制暖心好礼</span>
-            <span>领取时间：2019-03-05至2019-03-20</span>
-            <p>导购员：张三</p>
-        </div>
-    </div>
-    <div class="pro-list">
-        <img src="./images/pic.jpeg" alt="">
-        <div class="item-list">
-            <span class="title">周大福定制暖心好礼</span>
-            <span>领取时间：2019-03-05至2019-03-20</span>
-            <p>导购员：张三</p>
-        </div>
-    </div>
-    <div class="pro-list">
-        <img src="./images/pic.jpeg" alt="">
-        <div class="item-list">
-            <span class="title">周大福定制暖心好礼</span>
-            <span>领取时间：2019-03-05至2019-03-20</span>
-            <p>导购员：张三</p>
-        </div>
-    </div>
-    <div class="pro-list">
-        <img src="./images/pic.jpeg" alt="">
-        <div class="item-list">
-            <span class="title">周大福定制暖心好礼</span>
-            <span>领取时间：2019-03-05至2019-03-20</span>
-            <p>导购员：张三</p>
-        </div>
-    </div>
-
+<!--    <div class="pro-list">-->
+<!--        <img src="./images/pic.jpeg" alt="">-->
+<!--        <div class="item-list">-->
+<!--            <span class="title">周大福定制暖心好礼</span>-->
+<!--            <span>领取时间：2019-03-05</span>-->
+<!--            <p>导购员：张三</p>-->
+<!--        </div>-->
+<!--    </div>-->
 </div>
 </body>
+<script src="../components/js/jquery-3.2.1.min.js"></script>
+<script>
+    $(function () {
+        let htmlone =''
+        htmlone = '<span onClick="javascript :history.back(-1)"><a href="#" class="iconfont">&#xe675;<span>返回</span></a></span>\n' +
+            '        <span class="tit">礼品查询</span>\n' +
+            '        <span><a href="#" class="iconfont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>'
+        $('.top').append(htmlone)
+        function f1(){
+            $.get("http://zdf.dev.hyplmm.com/platform/v1/customer/customerGift",function(res){
+                console.log(res)
+                let data = res.result.lists.data
+                for(let i = 0;i<data.length;i++){
+                    console.log(data[i])
+                    let alllist = data[i]
+                    let html =''
+                    html = '<div class="pro-list">\n' +
+                        '        <img src="'+ alllist.img+'" alt="">\n' +
+                        '        <div class="item-list">\n' +
+                        '            <span class="title">'+ alllist.gift_name+'</span>\n' +
+                        '            <span>领取时间：'+ alllist.created_at+'</span>\n' +
+                        '            <span>状态：'+ alllist.status+'</span>\n' +
+                        '            <p>导购员：'+ alllist.user_name+'</p>\n' +
+                        '        </div>\n' +
+                        '    </div>'
+
+                    $('.purchasehistory').append(html)
+
+                }
+            },"json");
+
+        }
+        f1()
+
+
+    })
+</script>
+
 </html>

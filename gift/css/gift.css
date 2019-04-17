@@ -17,8 +17,11 @@
 .top a .iconfont{
     font-size: 1.5rem;
 }
+.top .tit{
+    font-size: 1.3rem;
+}
 .purchasehistory{
-    margin-top: 3.3rem;
+    padding-top: 3.8rem;
     background: #f2f2f2;
     height: 100%;
 }
@@ -44,7 +47,10 @@
     flex-direction: column;
 }
 .pro-list .item-list span{
-    margin-bottom: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.16rem;
+}
+.pro-list .item-list p{
     font-size: 1.16rem;
 }
 .title{

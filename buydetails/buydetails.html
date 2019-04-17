@@ -11,43 +11,142 @@
 <body>
 <div class="buydetails">
     <div class="top">
-        <span onClick="javascript :history.back(-1)" ><a href="#" class="iconfont">&#xe675;<span>返回</span></a></span>
-        <span>购买记录详情</span>
-        <span><a href="#" class="iconfont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+<!--        <span onClick="javascript :history.back(-1)" ><a href="#" class="iconfont">&#xe675;<span>返回</span></a></span>-->
+<!--        <span class="tit">购买记录详情</span>-->
+<!--        <span><a href="#" class="iconfont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>-->
     </div>
     <div class="order">
-        <span>订单编号：843828339</span>
-        <p>购买时间：2019-02-03</p>
+<!--        <span>订单编号：843828339</span>-->
+<!--        <p>购买时间：2019-02-03</p>-->
     </div>
-    <div class="pro-list">
-        <img src="" alt="">
-        <div class="pro-mes">
-            <span class="title">浪琴手表   康卡斯系列石英男表</span>
-            <span>数量：1</span>
-            <span>折扣：五折</span>
-            <p>售价：<span class="pirce">¥15000</span></p>
-        </div>
+    <div class="product">
+<!--        <div class="pro-list">-->
+<!--            <img src="" alt="">-->
+<!--            <div class="pro-mes">-->
+<!--                <span class="title">浪琴手表   康卡斯系列石英男表</span>-->
+<!--                <span>数量：1</span>-->
+<!--                <span>折扣：五折</span>-->
+<!--                <p>售价：<span class="pirce">¥15000</span></p>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
     <div class="list">
-        <ul>
-            <li>
-                <span>支付方式：</span>
-                <span>在线支付</span>
-            </li>
-            <li>
-                <span>购买人姓名：</span>
-                <span>王梓轩</span>
-            </li>
-            <li>
-                <span>购买人手机号：</span>
-                <span>18720094586</span>
-            </li>
-            <li>
-                <span>实付金额：</span>
-                <span class="newpirce">¥15000</span>
-            </li>
-        </ul>
+<!--        <ul>-->
+<!--            <li>-->
+<!--                <span>支付方式：</span>-->
+<!--                <span>在线支付</span>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <span>购买人姓名：</span>-->
+<!--                <span>王梓轩</span>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <span>导购员：</span>-->
+<!--                <span>王建军</span>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <span>购买人手机号：</span>-->
+<!--                <span>18720094586</span>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <span>商品总价：</span>-->
+<!--                <span class="newpirce">¥15000</span>-->
+<!--            </li>-->
+<!--        </ul>-->
     </div>
 </div>
 </body>
+<script src="../components/js/jquery-3.2.1.min.js"></script>
+<script>
+    function getUrlParam(name) { //封装方法
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg); //匹配目标参数
+        if (r != null) return unescape(r[2]);
+        return null; //返回参数值
+    }
+    let id = getUrlParam('id')
+    console.log(id)
+    $(function () {
+        let html1 = ''
+        html1 = '<span onClick="javascript :history.back(-1)" ><a href="#" class="iconfont">&#xe675;<span>返回</span></a></span>\n' +
+            '        <span class="tit">购买记录详情</span>\n' +
+            '        <span><a href="#" class="iconfont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>'
+        $('.top').append(html1)
+        function f1(even){
+            $.get("http://zdf.dev.hyplmm.com/platform/v1/order/detail/"+id,function(res){
+                console.log(res)
+                let data = res.result
+                let html2 = ''
+                html2 = '<span>订单编号：'+data.order_code+'</span>\n' +
+                    '        <p>购买时间：'+ data.created_at+'</p>'
+                $('.order').append(html2)
+                let prolist = res.result.item
+                for(let i = 0;i<prolist.length;i++){
+                    let protwolist = prolist[i]
+                    let html3 = ''
+                    html3 = '' +
+                        ' <div class="pro-list">\n' +
+                        '            <img src="" alt="">\n' +
+                        '            <div class="pro-mes">\n' +
+                        '                <span class="title">'+protwolist.goods_name+'</span>\n' +
+                        '                <span>数量：x'+protwolist.goods_num+'</span>\n' +
+                        '                <span class="discountlist-'+protwolist.id +'">折扣：<span id="discount">'+protwolist.discount+'折</span></span>\n' +
+                        '                <p>售价：<span class="pirce">¥'+protwolist.goods_price+'</span></p>\n' +
+                        '            </div>\n' +
+                        '        </div>'
+                    $('.product').append(html3)
+                    var arr = parseInt(prolist[i].discount)
+                    console.log(arr)
+                        if(arr === 0){
+                                $(".discountlist-"+protwolist.id).hide()
+                        }
+                }
+
+                let htmllist = ''
+                htmllist = '<ul>\n' +
+                    '            <li>\n' +
+                    '                <span>支付方式：</span>\n' +
+                    '                <span>在线支付</span>\n' +
+                    '            </li>\n' +
+                    '            <li>\n' +
+                    '                <span>购买人姓名：</span>\n' +
+                    '                <span>'+data.customer_name+'</span>\n' +
+                    '            </li>\n' +
+                    '            <li>\n' +
+                    '                <span>导购员：</span>\n' +
+                    '                <span>'+data.user_name+'</span>\n' +
+                    '            </li>\n' +
+                    '            <li>\n' +
+                    '                <span>购买人手机号：</span>\n' +
+                    '                <span>'+data.mobile+'</span>\n' +
+                    '            </li>\n' +
+                    '            <li>\n' +
+                    '                <span>商品总价：</span>\n' +
+                    '                <span class="newpirce">¥'+data.payment+'</span>\n' +
+                    '            </li>\n' +
+                    '        </ul>'
+                $('.list').append(htmllist)
+
+        },"json");
+
+        }
+        f1()
+
+
+    })
+</script>
 </html>
+
+
+<!--$(function () {-->
+
+<!--function f1(){-->
+<!--$.get("http://zdf.dev.hyplmm.com/platform/v1/order/detail/1",function(res){-->
+<!--console.log(res)-->
+<!--},"json");-->
+
+<!--}-->
+<!--f1()-->
+
+
+<!--})-->

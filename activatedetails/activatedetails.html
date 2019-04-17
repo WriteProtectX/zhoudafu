@@ -6,43 +6,133 @@
     <title>激活详情</title>
     <link rel="stylesheet" href="css/activatedetails.css">
     <link rel="stylesheet" href="../components/common.css">
+    <link rel="stylesheet" href="../components/zdialog.css">
+    <link rel="stylesheet" href="../components/reset.css">
     <link rel="stylesheet" href="../components/iconfont/iconfont.css">
+
 </head>
 <body>
     <div class="activatedetails">
-        <div class="top">
-            <span onClick="javascript :history.back(-1)" ><a href="#" class="iconfont">&#xe675;<span>返回</span></a></span>
-            <span>外观服务卡激活页</span>
-            <span><a href="#" class="iconfont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
-        </div>
-        <div class="text">
-            <span>服务卡激活</span>
-        </div>
-        <div class="one-list">
-            <div class="size">购买记录</div>
-            <div class="one-list-item">
-                <span>订单号：123456</span>
-                <span>商品名称：康卡斯系列石英男表</span>
-                <span>导购员：张三</span>
-                <p>购买时间：2019-03-05</p>
-            </div>
-        </div>
-        <div class="one-list">
-            <div class="size">有效日期</div>
-            <div class="one-list-item">
-                <span>激活后永久有效</span>
-            </div>
-        </div>
-        <div class="one-list">
-            <div class="size">有效日期</div>
-            <div class="one-list-item">
-                <span>1.持卡人与线下进行腕表清洗、表带更换等服务时，只需出示此电子服务卡，即可享受服务。</span>
-                <span>2.此服务卡只适用于本人使用</span>
-            </div>
-        </div>
-        <div class="btn">
-            <div><a href="#">确定激活</a></div>
-        </div>
+<!--        <div class="top">-->
+<!--            <span onClick="javascript :history.back(-1)" ><a href="#" class="iconfont">&#xe675;<span>返回</span></a></span>-->
+<!--            <span class="tit">外观服务卡激活页</span>-->
+<!--            <span><a href="#" class="iconfont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>-->
+<!--        </div>-->
+<!--        <div class="text">-->
+<!--            <span>服务卡激活</span>-->
+<!--        </div>-->
+<!--        <div class="one-list">-->
+<!--            <div class="size">购买记录</div>-->
+<!--            <div class="one-list-item">-->
+<!--                <span>订单号：123456</span>-->
+<!--                <span>商品名称：康卡斯系列石英男表</span>-->
+<!--                <span>导购员：张三</span>-->
+<!--                <p>购买时间：2019-03-05</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="one-list">-->
+<!--            <div class="size">有效日期</div>-->
+<!--            <div class="one-list-item">-->
+<!--                <span>激活后永久有效</span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="one-list">-->
+<!--            <div class="size">使用须知</div>-->
+<!--            <div class="one-list-item">-->
+<!--                <span>1.持卡人与线下进行腕表清洗、表带更换等服务时，只需出示此电子服务卡，即可享受服务。</span>-->
+<!--                <span>2.此服务卡只适用于本人使用</span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="btn">-->
+<!--            <div><a href="#">确定激活</a></div>-->
+<!--        </div>-->
     </div>
 </body>
+<script src="../components/js/jquery-3.2.1.min.js"></script>
+<script src="../components/js/zdialog.js"></script>
+<script>
+    $(function () {
+
+    function f2() {
+        $.get("http://zdf.dev.hyplmm.com/platform/v1/customer/newOrder",function(res){
+            console.log(res)
+            let data = res.result
+            let html = ''
+            html = '<div class="top">\n' +
+                '            <span onClick="javascript :history.back(-1)" ><a href="#" class="iconfont">&#xe675;<span>返回</span></a></span>\n' +
+                '            <span class="tit">外观服务卡激活页</span>\n' +
+                '            <span><a href="#" class="iconfont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>\n' +
+                '        </div>\n' +
+                '        <div class="text">\n' +
+                '            <span>服务卡激活</span>\n' +
+                '        </div>\n' +
+                '        <div class="one-list">\n' +
+                '            <div class="size">购买记录</div>\n' +
+                '            <div class="one-list-item">\n' +
+                '                <span>订单号：'+data.order_code+'</span>\n' +
+                '                <span>商品名称：'+data.title+'</span>\n' +
+                '                <span>导购员：'+data.user_name+'</span>\n' +
+                '                <p>购买时间：'+data.created_at+'</p>\n' +
+                '            </div>\n' +
+                '        </div>\n' +
+                '        <div class="one-list">\n' +
+                '            <div class="size">有效日期</div>\n' +
+                '            <div class="one-list-item">\n' +
+                '                <span>激活后永久有效</span>\n' +
+                '            </div>\n' +
+                '        </div>\n' +
+                '        <div class="one-list">\n' +
+                '            <div class="size">使用须知</div>\n' +
+                '            <div class="one-list-item">\n' +
+                '                <span>1.持卡人与线下进行腕表清洗、表带更换等服务时，只需出示此电子服务卡，即可享受服务。</span>\n' +
+                '                <span>2.此服务卡只适用于本人使用</span>\n' +
+                '            </div>\n' +
+                '        </div>\n' +
+                '        <div class="btn">\n' +
+                '            <div class="btntwo"></div>\n' +
+                '        </div>'
+            $('.activatedetails').append(html)
+
+            if(data.serviceStatus == "未激活"){
+                $(".btntwo").append("<span>确定激活</span>");
+                $(".btn").on("click", function (e) {
+                    $.DialogByZ.Confirm({Title: "", Content: "亲，确认激活吗？</br>",FunL:confirmL,FunR:Immediate})
+                })
+                function confirmL(){
+                    $.post("http://zdf.dev.hyplmm.com/platform/v1/serviceCard/activation/1904161028014271",function(res){
+                        console.log(res)
+                        if (res.message == "success"){
+                            alert("激活成功")
+                            window.location.href = "../index/index.html";
+                        }else {
+                            alert(res.message)
+                        }
+                    },"json");
+                }
+                function Immediate(){
+                    $(".zbox-popup-in").css("display","none")
+                    $(".zbox-active").css("display","none")
+                }
+            }else {
+                $(".btntwo").append("<span>已激活</span>");
+                // $(".btntwo span").css("background","#eee")
+                // $(".btntwo span").css("color","#333")
+            }
+
+
+
+
+        },"json");
+    }
+    f2()
+
+
+    })
+</script>
 </html>
+<!--// function f2() {-->
+<!--//     $.get("http://zdf.dev.hyplmm.com/platform/v1/customer/order",function(res){-->
+<!--//         console.log(res)-->
+<!--//     },"json");-->
+<!--// }-->
+<!--// f2()-->

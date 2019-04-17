@@ -18,8 +18,11 @@
 .top a .iconfont{
     font-size: 1.5rem;
 }
+.top .tit{
+    font-size: 1.3rem;
+}
 .buydetails{
-    margin-top: 3.3rem;
+    padding-top: 3.8rem;
     background: #f2f2f2;
     height: 100%;
 }
@@ -30,17 +33,19 @@
     flex-direction: column;
     font-size: 1.3rem;
     background: #fff;
-    margin-bottom: 0.83rem;
+    /*margin-bottom: 0.83rem;*/
 }
 .order span{
     margin-bottom: 0.83rem;
 }
-
+.product{
+    background: #FFF;
+    box-sizing: border-box;
+    padding: 0.83rem 1.6rem;
+}
 .pro-list{
     display: flex;
     align-items: center;
-    box-sizing: border-box;
-    padding: 0.83rem 1.6rem;
     background: #fff;
     margin-bottom: 0.5rem;
 }
@@ -60,14 +65,14 @@
     color: red;
     font-size: 1.5rem;
 }
-.title{
-    width: 20.3rem;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-}
+/*.title{*/
+/*    width: 20.3rem;*/
+/*    white-space:nowrap;*/
+/*    overflow:hidden;*/
+/*    text-overflow:ellipsis;*/
+/*}*/
 .pro-mes span{
-    margin-bottom: 1rem;
+    margin-bottom: 0.4rem;
 }
 .list ul li{
     display: flex;
@@ -81,4 +86,7 @@
 .newpirce{
     color: red;
     font-size: 1.5rem;
+}
+#discount{
+    color:#fda085;
 }

@@ -13,7 +13,7 @@
 <div class="purchasehistory">
     <div class="top">
         <span onClick="javascript :history.back(-1)"><a href="#" class="iconfont">&#xe675;<span>返回</span></a></span>
-        <span>管家详细信息</span>
+        <span class="tit">管家详细信息</span>
         <span><a href="#" class="iconfont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
     </div>
     <div class="tell-list">
@@ -29,4 +29,27 @@
 
 </div>
 </body>
+<script src="../components/js/jquery-3.2.1.min.js"></script>
+ <script>
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+                window.location.reload();
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+        // function f1(){
+        //     $.get("http://zdf.dev.hyplmm.com/platform/v1/order/detail/1",function(res){
+        //         console.log(res)
+        //     },"json");
+        //
+        // }
+        // f1()
+
+
+    })
+ </script>
 </html>

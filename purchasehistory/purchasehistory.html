@@ -12,46 +12,104 @@
 
 <div class="purchasehistory">
     <div class="top">
-        <span onClick="javascript :history.back(-1)"><a href="#" class="iconfont">&#xe675;<span>返回</span></a></span>
-        <span>购买记录</span>
-        <span><a href="#" class="iconfont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+        <!--        <span onClick="javascript :history.back(-1)"><a href="#" class="iconfont">&#xe675;<span>返回</span></a></span>-->
+        <!--        <span class="tit">购买记录</span>-->
+        <!--        <span><a href="#" class="iconfont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>-->
     </div>
-    <div class="pro-list">
-        <img src="./images/pic.jpeg" alt="">
-        <div class="item-list">
-            <span class="title">浪琴手表   康卡斯系列石英男表</span>
-            <span>导购员：张三</span>
-            <p>购买时间：2019-03-05</p>
-        </div>
-        <div class="btn"><a href="../buydetails/buydetails.html">详情</a></div>
-    </div>
-    <div class="pro-list">
-        <img src="./images/pic.jpeg" alt="">
-        <div class="item-list">
-            <span class="title">浪琴手表   康卡斯系列石英男表</span>
-            <span>导购员：张三</span>
-            <p>购买时间：2019-03-05</p>
-        </div>
-        <div class="btn"><a href="../buydetails/buydetails.html">详情</a></div>
-    </div>
-    <div class="pro-list">
-        <img src="./images/pic.jpeg" alt="">
-        <div class="item-list">
-            <span class="title">浪琴手表   康卡斯系列石英男表</span>
-            <span>导购员：张三</span>
-            <p>购买时间：2019-03-05</p>
-        </div>
-        <div class="btn"><a href="../buydetails/buydetails.html">详情</a></div>
-    </div>
-    <div class="pro-list">
-        <img src="./images/pic.jpeg" alt="">
-        <div class="item-list">
-            <span class="title">浪琴手表   康卡斯系列石英男表</span>
-            <span>导购员：张三</span>
-            <p>购买时间：2019-03-05</p>
-        </div>
-        <div class="btn"><a href="../buydetails/buydetails.html">详情</a></div>
-    </div>
+    <!--    <div class="product">-->
+    <!--        <div class="titles">-->
+    <!--            <div class="tititem">-->
+    <!--                <span>订单编号：1234567</span>-->
+    <!--                <span></span>-->
+    <!--                <p>购买时间：2019-03-05</p>-->
+    <!--            </div>-->
+    <!--            <span><a href="../buydetails/buydetails.html">查看详情</a></span>-->
+    <!--        </div>-->
+    <!--        <div class="pro-items">-->
+    <!--            <div class="pro-list">-->
+    <!--                <img src="./images/pic.jpeg" alt="">-->
+    <!--                <div class="item-list">-->
+    <!--                    <span class="title">浪琴手表   康卡斯系列石英男表</span>-->
+    <!--                    <span>价格：¥123.00</span>-->
+    <!--                    <p>数量：x1</p>-->
+    <!--                </div>-->
+    <!--                <div></div>-->
+    <!--            </div>-->
+    <!--            <div class="pro-list">-->
+    <!--                <img src="./images/pic.jpeg" alt="">-->
+    <!--                <div class="item-list">-->
+    <!--                    <span class="title">浪琴手表   康卡斯系列石英男表</span>-->
+    <!--                    <span>价格：¥123.00</span>-->
+    <!--                    <p>数量：x1</p>-->
+    <!--                </div>-->
+    <!--                <div></div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+
 </div>
 </body>
+<script src="../components/js/jquery-3.2.1.min.js"></script>
+<script>
+    $(function () {
+        let html1 = ''
+        html1 = '<span onClick="javascript :history.back(-1)"><a href="#" class="iconfont">&#xe675;<span>返回</span></a></span>\n' +
+            '        <span class="tit">购买记录</span>\n' +
+            '        <span><a href="#" class="iconfont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>'
+        $('.top').append(html1)
+
+        function f2() {
+            $.get("http://zdf.dev.hyplmm.com/platform/v1/customer/order", function (res) {
+                console.log(res)
+                let html = ''
+                let htmlone = ''
+                let datalist = res.result
+                // console.log(datalist)
+                let alllist = []
+                for (let i = 0; i < datalist.length; i++) {
+                    // console.log(datalist[i])
+                    let onelist = datalist[i]
+                    let twolist = datalist[i].item
+                    // alllist.push(twolist)
+                    console.log(twolist.length)
+
+                    html = ' <div class="product">\n' +
+                        '        <div class="titles">\n' +
+                        '            <div class="tititem">\n' +
+                        '                <span>订单编号：' + onelist.order_code + '</span>\n' +
+                        '                <span></span>\n' +
+                        '                <p>购买时间：' + onelist.created_at + '</p>\n' +
+                        '            </div>\n' +
+                        '            <span><a href="../buydetails/buydetails.html?id=' + datalist[i].id + '">查看详情</a></span>\n' +
+                        '        </div>\n' +
+                        '        <div class="pro-items-' + datalist[i].id + '">\n' +
+                        '            \n' +
+                        '        </div>\n' +
+                        '    </div>'
+                    $('.purchasehistory').append(html)
+                    for (let j = 0; j < twolist.length; j++) {
+                        // console.log(alllist[j])
+                        let prolist = twolist[j]
+                        console.log(prolist)
+                        htmlone = '<div class="pro-list">\n' +
+                            '                <img src="./images/pic.jpeg" alt="">\n' +
+                            '                <div class="item-list">\n' +
+                            '                    <span class="title">' + prolist.goods_name + '</span>\n' +
+                            '                    <span >价格：' + prolist.goods_price + '</span>\n' +
+                            '                    <p>数量：x' + prolist.goods_num + '</p>\n' +
+                            '                </div>\n' +
+                            '                <div></div>\n' +
+                            '            </div>'
+                        $('.pro-items-' + datalist[i].id).append(htmlone)
+
+                    }
+                }
+            }, "json");
+        }
+
+        f2()
+
+
+    })
+</script>
 </html>
