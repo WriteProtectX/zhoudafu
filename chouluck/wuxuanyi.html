@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" type="text/css" href="css/dropload.css" />
+		<link rel="stylesheet" type="text/css" href="css/luck.css" />
+		<title>抽心愿</title>
+	</head>
+	<body>
+		<div class="big_box">
+			<div class="hearter">
+				<img src="img/preferentialPurchaseBanner.png" alt="">
+			</div>
+			<div class="pro_list">
+				<ul>
+
+
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="./js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		function getUrlParam(name) { //封装方法
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+			var r = window.location.search.substr(1).match(reg); //匹配目标参数
+			if (r != null) return unescape(r[2]);
+			return null; //返回参数值
+		}
+		let user_id = getUrlParam('user_id')
+		$(function() {
+            $.get('http://service.hyppmm.com/aspiration/v1/aspirationsgood/sreachluckdraw/'+user_id+'',function(data){
+				for(let i = 0 ; i < data.length;i++){
+					let yh_num = data[i].price - data[i].discount_price
+					let _html = '<li>\n' +
+							'\t\t\t\t\t\t<a style="display: block;width:100%;" href="http://game.hyppmm.com/chouluck/lingquan.html?details='+data[i].id+'><img src="'+data[i].image+'" alt=""></a>\n' +
+							'\t\t\t\t\t\t<div class="box_mes">\n' +
+							'\t\t\t\t\t\t\t<span class="tit">'+data[i].goods_name+'</span>\n' +
+							'\t\t\t\t\t\t\t<p><span class="pcie_quan">券后价</span>￥'+data[i].discount_price+'</p>\n' +
+							'\t\t\t\t\t\t\t<p><span class="pcie_yuan">原价</span><del class="price_del">￥'+data[i].price+'</del></p>\n' +
+							'\t\t\t\t\t\t\t<a href="http://game.hyppmm.com/chouluck/lingquan.html?details='+data[i].id+'">\n' +
+							'\t\t\t\t\t\t\t\t<div class="allquan">\n' +
+							'\t\t\t\t\t\t\t\t\t<span class="left_quan">￥<b>'+yh_num+'</b>优惠券</span>\n' +
+							'\t\t\t\t\t\t\t\t</div>\n' +
+							'\t\t\t\t\t\t\t</a>\n' +
+							'\t\t\t\t\t\t</div>\n' +
+							'\t\t\t\t\t</li>'
+					$('.pro_list ul').append(_html)
+				}
+			})
+		})
+	</script>
+</html>

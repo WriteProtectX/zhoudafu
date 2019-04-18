@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" type="text/css" href="css/dropload.css" />
+		<link rel="stylesheet" type="text/css" href="css/luck.css" />
+		<title>抽心愿</title>
+	</head>
+	<body>
+		<div class="preferentialPurchaseDetail-page" id="preferentialPurchaseDetail">
+			<div class="preferentialPurchaseProductDetail-content  tb-content">
+
+			</div>
+
+
+			<div class="model">
+				<div class="model-con">
+					<div>
+						<p id="text"></p>
+					</div>
+					<div class="model-btn">确认</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="./js/jquery-3.2.1.min.js"></script>
+	<script src="./js/clipboard.min.js"></script>
+	<script>
+		function getUrlParam(name) { //封装方法
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+			var r = window.location.search.substr(1).match(reg); //匹配目标参数
+			if (r != null) return unescape(r[2]);
+			return null; //返回参数值
+		}
+		let details = getUrlParam('details')
+           $.get('http://service.hyppmm.com/aspiration/v1/aspirationsgood/details/'+details+'',function(res){
+           	  let _textNum = res.price - res.discount_price
+			   $('.model-con p').text(res.command_code)
+			   let _html = '<img src="'+res.image+'">\n' +
+					   '\t\t\t\t<div class="detailBox">\n' +
+					   '\t\t\t\t\t<div class="couponsBox">\n' +
+					   '\t\t\t\t\t\t<div class="coupons">\n' +
+					   '\t\t\t\t\t\t\t<div>\n' +
+					   '\t\t\t\t\t\t\t\t<p>￥'+_textNum+'</p>\n' +
+					   '\t\t\t\t\t\t\t\t<p>优惠券</p>\n' +
+					   '\t\t\t\t\t\t\t</div>\n' +
+					   '\t\t\t\t\t\t\t<div>\n' +
+					   '\t\t\t\t\t\t\t\t<p class="tb-btn" data-clipboard-text="'+res.command_code+'">立即使用</p>\n' +
+					   '\t\t\t\t\t\t\t</div>\n' +
+					   '\n' +
+					   '\t\t\t\t\t\t</div>\n' +
+					   '\t\t\t\t\t</div>\n' +
+					   '\t\t\t\t\t<div class="detailMsg">\n' +
+					   '\t\t\t\t\t\t<h3>'+res.goods_name+'</h3>\n' +
+					   '\t\t\t\t\t\t<p class="price">\n' +
+					   '\t\t\t\t\t\t\t<strong>￥'+res.discount_price+'</strong>\n' +
+					   '\t\t\t\t\t\t\t<del>￥'+res.price+'</del>\n' +
+					   '\t\t\t\t\t\t\t<span>特价</span>\n' +
+					   '\t\t\t\t\t\t</p>\n' +
+					   '\t\t\t\t\t\t<p>'+res.goods_name+'</p>\n' +
+					   '\t\t\t\t\t</div>\n' +
+					   '\t\t\t\t</div>'
+			    $('.tb-content').html(_html)
+			   let clipboard = new ClipboardJS('.tb-btn');
+			   $('.tb-btn').click(function(){
+			     	$('.model').css('display','flex')
+			   })
+			   $('.model-btn').click(function(){
+				   $('.model').css('display','none')
+			   })
+		   })
+	</script>
+
+
+</html>

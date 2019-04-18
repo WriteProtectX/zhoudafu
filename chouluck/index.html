@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抽心愿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/dropload.css"/>
+    <link rel="stylesheet" type="text/css" href="css/luck.css"/>
+</head>
+<body>
+<div class="main">
+    <div class="luck_img">
+        <img src="img/index-banner.png" alt="">
+    </div>
+    <div class="luck_main">
+        <ul>
+        </ul>
+    </div>
+</div>
+<div class="btn">
+    <a href="###">
+        <img src="img/indexbtn.png" alt="">
+    </a>
+</div>
+<div class="show">
+    <div class="zhuan_pic">
+        <img class="pic1" src="img/rotaryBg.png" alt="">
+        <div class="pic2Img">
+            <img class="pic2" src="img/rotaryPrize.png" alt="">
+        </div>
+        <img class="pic3" src="img/goBtn.png" alt="">
+    </div>
+    <div class="btn_box"><img class="pic4" src="img/closeBtn.png" alt=""></div>
+</div>
+<div class="alert-con">
+    最多选择5件商品
+</div>
+<div class="alert-con2">
+    请选择1~5件商品
+</div>
+<div class="luck_go">
+    <div class="imgBox">
+        <img src="./img/zjtp.png" alt="">
+    </div>
+</div>
+</body>
+<script src="./js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+    function getUrlParam(name) { //封装方法
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg); //匹配目标参数
+        if (r != null) return unescape(r[2]);
+        return null; //返回参数值
+    }
+    let user_id = getUrlParam('user_id')
+    $(function () {
+        $.get('http://service.hyppmm.com/aspiration/v1/aspirationsgood/uppergoods', function (res) {
+            // console.log(res)
+            let list = res.result.lists.data
+            console.log(list)
+            let html = ''
+
+            for (let i = 0; i < list.length; i++) {
+                html = '<li data-id="'+list[i].id+'">\n' +
+                    '\t\t\t\t\t\t<div class="luck_box">\n' +
+                    '\t\t\t\t\t\t\t<div class="luck_lisr">\n' +
+                    '\t\t\t\t\t\t\t\t<img src="' + list[i].image + '" alt="">\n' +
+                    '\t\t\t\t\t\t\t\t<span class="tit">' + list[i].goods_name + '</span>\n' +
+                    '\t\t\t\t\t\t\t\t<p><span class="box">淘宝官方价</span>￥' + list[i].price + '</p>\n' +
+                    '\t\t\t\t\t\t\t\t<i>加入许愿盒</i>\n' +
+                    '\t\t\t\t\t\t\t</div>\n' +
+                    '\t\t\t\t\t\t</div>\n' +
+                    '\t\t\t\t\t</li>'
+
+                $('.luck_main ul').append(html)
+            }
+            let _onNum = 0;
+            $(".btn").click(function () {
+               if(_onNum == 0){
+                   $('.alert-con2').css('display', 'block')
+                   setTimeout(function () {
+                       $('.alert-con2').css('display', 'none')
+                   }, 1000)
+               }else{
+                   $(".show").css("display", "block");
+                   $("body").css("overflow", "hidden")
+               }
+            });
+            $(".pic4").click(function () {
+                $(".show").css("display", "none");
+                $("body").css("overflow", "auto")
+            });
+            $(".luck_main li").click(function () {
+                if (_onNum >= 5) {
+                    if ($(this).hasClass("on")){
+                        _onNum--
+                        $(this).removeClass("on");
+                    }else{
+                        $('.alert-con').css('display', 'block')
+                        setTimeout(function () {
+                            $('.alert-con').css('display', 'none')
+                        }, 1000)
+                    }
+                } else {
+                    if (!$(this).hasClass("on")) {
+                        _onNum++
+                        $(this).addClass("on");
+                    } else {
+                        _onNum--
+                        $(this).removeClass("on");
+                    }
+                }
+            });
+        })
+
+
+        //转盘逻辑
+        let step = 0;
+        let flag = true;
+        let myDeg = 0;//角度
+        let arrSelect = 4 //中奖位置
+        let stepDeg = [0, 45, 90, 135, 180, 225, 270, 315];//角度数组
+
+        for (let i = 0; i < stepDeg.length; i++) {
+            myDeg = stepDeg[arrSelect]
+        }
+
+        $('.pic3').click(function () {
+            $.get('http://service.hyppmm.com//aspiration/v1/aspirationsgood/isLottery/'+user_id+'',function(res){
+                if(res==0){
+                    if (flag) {
+                        flag = false
+                        let times = setInterval(function () {
+                            if (step >= 1800 && step <= 2000) {
+                                step += 5
+                                $('.pic2').css({
+                                    'transform': 'rotate(' + step + 'deg)'
+                                })
+                            } else if (step >= 2000 && step <= 2200) {
+                                step += 4
+                                $('.pic2').css({
+                                    'transform': 'rotate(' + step + 'deg)'
+                                })
+                            } else if (step >= 2200 && step <= 2400) {
+                                step += 3
+                                $('.pic2').css({
+                                    'transform': 'rotate(' + step + 'deg)'
+                                })
+                            } else if (step >= 2400 && step <= 2600) {
+                                step += 2
+                                $('.pic2').css({
+                                    'transform': 'rotate(' + step + 'deg)'
+                                })
+                            } else if (step >= 2600) {
+                                step += 1
+                                $('.pic2').css({
+                                    'transform': 'rotate(' + step + 'deg)'
+                                })
+                            } else {
+                                step += 7
+                                $('.pic2').css({
+                                    'transform': 'rotate(' + step + 'deg)'
+                                })
+                            }
+                            if (step == 2880 + myDeg - 22) {
+                                clearInterval(times)
+                                setTimeout(function () {
+                                    $('.luck_go').css('display','flex')
+                                    flag = true
+                                    step = myDeg;
+                                }, 800)
+                            }
+
+                        })
+                    }
+                }else{
+                    alert('您今天已经抽取过心愿了')
+                }
+            })
+
+        })
+
+        let obj = {
+            item_id : [],
+            user_id:user_id
+        }
+        $('.luck_go .imgBox').click(function(){
+            let lists = $('.luck_main li.on')
+            for(let i = 0 ;i<lists.length;i++){
+                obj.item_id.push(lists[i].getAttribute('data-id'))
+            }
+            console.log(obj)
+            if(obj.item_id.length!==0){
+                $.post('http://service.hyppmm.com/aspiration/v1/aspirationsgood/luckdraw',obj,function(res){
+                    console.log(res)
+                    if(res.errorcode===0){
+                        window.location.href = 'http://game.hyppmm.com/chouluck/wuxuanyi.html?user_id='+user_id+''
+                    }
+                })
+            }
+
+        })
+    })
+
+
+</script>
+</html>
